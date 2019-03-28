@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoringSystem : MonoBehaviour
@@ -14,7 +15,12 @@ public class ScoringSystem : MonoBehaviour
     {
         collectSound.Play();
         theScore += 1;
-        scoreText.GetComponent<Text>().text = "COIN: " + theScore;
+        if (theScore == 10)
+        {
+            SceneManager.LoadScene("");
+            return;
+        }
+        scoreText.GetComponent<Text>().text = theScore.ToString() + "/10";
         Destroy(gameObject);
     }
 }
