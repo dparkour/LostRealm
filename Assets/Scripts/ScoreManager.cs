@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (Score >= 10)
         {
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             return;
         }
         text.text = Score.ToString() + "/10";
