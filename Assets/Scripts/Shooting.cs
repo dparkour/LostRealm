@@ -20,7 +20,7 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 20, mask))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 10, mask))
             {
                 if (hit.collider.gameObject.GetComponent<Crystal>())
                 {
