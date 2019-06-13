@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
-    public Transform Player;
     public LayerMask mask;
     public Image cursor;
     public GameObject shooting_missile;
@@ -21,9 +20,8 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
-
         {
-            GameObject missile = Instantiate(shooting_missile, shootposition.position, Player.transform.rotation);
+            GameObject missile = Instantiate(shooting_missile, shootposition.position, transform.rotation, shootposition.transform);
         }
         cursor.color = new Color(255,255,255);
         RaycastHit hit;
@@ -42,7 +40,6 @@ public class Shooting : MonoBehaviour
 
                         {
                             c.activated = true;
-                            GameObject missile = Instantiate(shooting_missile, shootposition.position, transform.rotation);
                         }
                     }
                 }
