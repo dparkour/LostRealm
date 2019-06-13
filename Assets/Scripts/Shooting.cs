@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
+    public Transform Player;
     public LayerMask mask;
     public Image cursor;
+    public GameObject shooting_missile;
+    public Transform shootposition;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,11 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+
+        {
+            GameObject missile = Instantiate(shooting_missile, shootposition.position, Player.transform.rotation);
+        }
         cursor.color = new Color(255,255,255);
         RaycastHit hit;
             {
@@ -34,6 +42,7 @@ public class Shooting : MonoBehaviour
 
                         {
                             c.activated = true;
+                            GameObject missile = Instantiate(shooting_missile, shootposition.position, transform.rotation);
                         }
                     }
                 }
