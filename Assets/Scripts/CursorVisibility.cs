@@ -8,6 +8,7 @@ public class CursorVisibility : MonoBehaviour
     void Update()
     {
         //Set Cursor to not be visible
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 }
