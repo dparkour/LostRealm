@@ -17,7 +17,7 @@ public class ScoringSystem : MonoBehaviour
         theScore += 1;
         if (theScore == 10)
         {
-            SceneManager.LoadScene("");
+            SceneManager.LoadScene("Credits");
             return;
         }
         scoreText.GetComponent<Text>().text = theScore.ToString() + "/10";
