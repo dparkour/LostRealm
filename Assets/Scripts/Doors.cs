@@ -6,10 +6,12 @@ public class Doors : MonoBehaviour
 {
     public Crystal crystal1;
     public Crystal crystal2;
+    private Animator anim;
+    [SerializeField] private GameObject uiTrigger;
 
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -17,7 +19,8 @@ public class Doors : MonoBehaviour
     {
         if(crystal1.activated && crystal2.activated)
         {
-            gameObject.SetActive(false);
+            anim.SetTrigger("OpenDoors");
+            uiTrigger.SetActive(false);
         }
     }
 }
