@@ -15,14 +15,25 @@ public class UIDeactivation : MonoBehaviour
     private TextMeshPro currentTextMeshPro;
     private Text currentText;
 
+    private float targetAlpha;
+
     private void Start()
     {
         if (GetComponent<Image>())
+        {
             currentImage = GetComponent<Image>();
+            targetAlpha = currentImage.color.a;
+        }
         else if (GetComponent<TextMeshProUGUI>())
+        {
             currentTextMeshUGUI = GetComponent<TextMeshProUGUI>();
+            targetAlpha = currentTextMeshUGUI.color.a;
+        }
         else if (GetComponent<Text>())
+        {
             currentText = GetComponent<Text>();
+            targetAlpha = currentText.color.a;
+        }
 
         StartCoroutine(FadeIn(WaitDelay));
     }
@@ -30,11 +41,23 @@ public class UIDeactivation : MonoBehaviour
     private IEnumerator FadeIn(float time)
     {
         if (currentImage != null)
-            currentImage.CrossFadeAlpha(1, FadeTime, true);
+        {
+            currentImage.canvasRenderer.SetAlpha(0.1f);
+            currentImage.CrossFadeAlpha(1f, FadeTime, true);
+
+        }
         else if (currentTextMeshPro != null)
-            currentTextMeshPro.CrossFadeAlpha(1, FadeTime, true);
+        {
+            currentTextMeshPro.canvasRenderer.SetAlpha(0.1f);
+            currentTextMeshPro.CrossFadeAlpha(1f, FadeTime, true);
+
+        }
         else if (currentTextMeshUGUI != null)
-            currentTextMeshUGUI.CrossFadeAlpha(1, FadeTime, true);
+        {
+            currentTextMeshUGUI.canvasRenderer.SetAlpha(0.1f);
+            currentTextMeshUGUI.CrossFadeAlpha(1f, FadeTime, true);
+
+        }
         yield return new WaitForSeconds(time);
         StartCoroutine(FadeOut(WaitDelay));
     }
